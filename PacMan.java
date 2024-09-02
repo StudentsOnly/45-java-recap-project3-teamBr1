@@ -16,20 +16,20 @@ public class PacMan {
         int newX = x, newY = y;
 
         switch (direction) {
-            case 'U':
+            case 'W':
                 newX = x - 1;
                 break;
-            case 'D':
+            case 'S':
                 newX = x + 1;
                 break;
-            case 'L':
+            case 'A':
                 newY = y - 1;
                 break;
-            case 'R':
+            case 'D':
                 newY = y + 1;
                 break;
             default:
-                System.out.println("Invalid move. Use U, D, L, R.");
+                System.out.println("Invalid move. Use W, S, A, D.");
                 return;
         }
 
