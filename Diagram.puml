@@ -1,0 +1,64 @@
+@startuml
+
+class Main{
+ +static void main(String[] args)
+}
+
+class Game {
+    -Board board
+    -PacMan pacMan
+    -boolean gameOver = false
+    +Game()
+    +void start()
+    -void checkGameState()
+
+}
+
+class Board {
+    -int size
+    -char[][] grid
+    -List<Ghost> ghosts = new ArrayList<>()
+    -Random random = new Random()
+    +Board(int size)
+    -void initializeBoard()
+    -void placeRandomGhosts(int count)
+    -void placeRandom(char ch, int count)
+    +void printBoard()
+    +char getCell(int x, int y)
+    +void setCell(int x, int y, char ch)
+    +boolean isWithinBounds(int x, int y)
+    +boolean isGameOver(int pacManX, int pacManY)
+    +void moveGhosts()
+    +int getSize()
+}
+
+class PacMan {
+    -int x, y
+    -int score = 0
+    -boolean invincible = false
+    -int invincibleCounter = 0
+    -Board board
+    +PacMan(Board board)
+    +void move(char direction)
+    +void updateInvincibility()
+    +int getScore()
+    +int getX()
+    +int getY()
+    +boolean isInvincible()
+}
+
+class Ghost {
+    -int x, y
+    -Board board
+    -Random random = new Random()
+    -char previousCell = '.'
+    +Ghost(int x, int y, Board board)
+    +void move()
+}
+Main --> Game : calls
+Game --> Board : uses
+Game --> PacMan : uses
+Board --> Ghost : manages
+PacMan --> Board : uses
+Ghost --> Board : uses
+@enduml
