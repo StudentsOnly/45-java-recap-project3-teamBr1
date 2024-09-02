@@ -7,11 +7,22 @@ public class Board {
     private char[][] grid;
     private List<Ghost> ghosts = new ArrayList<>();
     private Random random = new Random();
+    private DifficultyLevel difficultyLevel = DifficultyLevel.EASY;
 
-    public Board(int size) {
+
+    public enum DifficultyLevel {
+        EASY, NORMAL, HARD
+    }
+
+    public void setDifficultyLevel(DifficultyLevel difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
+
+    public Board(int size, DifficultyLevel difficultyLevel) {
         this.size = size;
         grid = new char[size][size];
         initializeBoard();
+        this.difficultyLevel = difficultyLevel;
     }
 
     private void initializeBoard() {
@@ -21,8 +32,36 @@ public class Board {
             }
         }
 
-        placeRandomGhosts(3, Ghost.Behaviour.NORMAL); // Place 3 ghosts
-        placeRandom('*', 2); // Place 2 power-ups
+        int ghostCount;
+        int powerupsCount;
+        Ghost.Behaviour ghostBehaviour;
+
+
+        switch (difficultyLevel) {
+            case EASY:
+                ghostCount = 3;
+                ghostBehaviour = Ghost.Behaviour.NORMAL;
+                powerupsCount = 4;
+                break;
+            case NORMAL:
+                ghostCount = 4;
+                ghostBehaviour = Ghost.Behaviour.FAST;
+                powerupsCount = 3;
+                break;
+            case HARD:
+                ghostCount = 5;
+                ghostBehaviour = Ghost.Behaviour.TELEPORTING;
+                powerupsCount = 2;
+                break;
+            default:
+                ghostCount = 3;
+                ghostBehaviour = Ghost.Behaviour.NORMAL;
+                powerupsCount = 4;
+                break;
+        }
+
+        placeRandomGhosts(ghostCount, ghostBehaviour); // Place 3 ghosts
+        placeRandom('*', powerupsCount); // Place 2 power-ups
     }
 
     private void placeRandomGhosts(int count, Ghost.Behaviour behaviour) {
