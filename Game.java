@@ -17,7 +17,7 @@ public class Game {
             board.printBoard();
             System.out.println("Score: " + pacMan.getScore());
             System.out.println("Move (U/D/L/R): ");
-            char move = scanner.next().charAt(0);
+            char move = scanner.next().toUpperCase().charAt(0);
 
             pacMan.move(move);
             board.moveGhosts();

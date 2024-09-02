@@ -5,11 +5,17 @@ public class Ghost {
     private Board board;
     private Random random = new Random();
     private char previousCell = '.'; // To remember what was on the cell before the ghost moved there
+    private Behaviour behaviour = Behaviour.NORMAL;
 
-    public Ghost(int x, int y, Board board) {
+    enum Behaviour {
+        NORMAL, FAST, TELEPORTING
+    }
+
+    public Ghost(int x, int y, Board board, Behaviour behaviour) {
         this.x = x;
         this.y = y;
         this.board = board;
+        this.behaviour = behaviour;
         board.setCell(x, y, 'G');
     }
 
