@@ -22,8 +22,22 @@ public class Ghost {
     public void move() {
         int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         int[] direction = directions[random.nextInt(directions.length)];
-        int newX = x + direction[0];
-        int newY = y + direction[1];
+        int newX;
+        int newY;
+        switch (behaviour) {
+            default -> {
+                newX = x + direction[0];
+                newY = y + direction[1];
+            }
+            case TELEPORTING -> {
+                newX = random.nextInt(board.getSize());
+                newY = random.nextInt(board.getSize());
+            }
+            case FAST ->  {
+                newX = x + 2 * direction[0];
+                newY = y + 2 * direction[1];
+            }
+        }
 
         if (board.isWithinBounds(newX, newY) && board.getCell(newX, newY) != 'G') {
             // Restore the previous cell's state before the ghost moved
