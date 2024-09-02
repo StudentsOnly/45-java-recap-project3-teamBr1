@@ -21,11 +21,12 @@ public class Board {
     public Board(int size, DifficultyLevel difficultyLevel) {
         this.size = size;
         grid = new char[size][size];
-        initializeBoard();
         this.difficultyLevel = difficultyLevel;
+        initializeBoard();
+
     }
 
-    private void initializeBoard() {
+    void initializeBoard() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 grid[i][j] = '.';
