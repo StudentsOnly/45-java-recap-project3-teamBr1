@@ -1,0 +1,56 @@
+@startmindmap
+'https://plantuml.com/mindmap-diagram
+
+'caption figure 1
+title Advanced game ideas title
+
+* Game
+** Console
+*** Controls: WASD, .toUpperCase() always
+** Menu <- Olga
+*** Restart
+'*** Save
+*** Quit
+*** Difficulty
+**** Easy
+**** Normal
+'**** Nightmare
+**** Hell
+'**** Inferno
+** Mechanics
+*** Ghosts
+**** Teleporting <- Michael Hell
+**** Fast - 2Steps <- Olga Normal
+'**** Follows Pacman 1 field each round <- Olena Hell
+
+*** Items Maybe Later
+'**** Shuffle Row
+'**** Shuffle Column
+'**** Shuffle Row and Column
+*** Multiplayer <- Michael
+**** 2nd Pacman
+
+'* <&flag>Debian
+'** <&globe>Ubuntu
+'*** Linux Mint
+'*** Kubuntu
+'*** Lubuntu
+'*** KDE Neon
+'** <&graph>LMDE
+'** <&pulse>SolydXK
+'** <&people>SteamOS
+'** <&star>Raspbian with a very long name
+'*** <s>Raspmbc</s> => OSMC
+'*** <s>Raspyfi</s> => Volumio
+
+header
+My super header
+endheader
+
+center footer My super footer
+
+legend right
+  Short
+  legend
+endlegend
+@endmindmap

@@ -21,18 +21,18 @@ public class Board {
             }
         }
 
-        placeRandomGhosts(3); // Place 3 ghosts
+        placeRandomGhosts(3, Ghost.Behaviour.NORMAL); // Place 3 ghosts
         placeRandom('*', 2); // Place 2 power-ups
     }
 
-    private void placeRandomGhosts(int count) {
+    private void placeRandomGhosts(int count, Ghost.Behaviour behaviour) {
         for (int i = 0; i < count; i++) {
             int x, y;
             do {
                 x = random.nextInt(size);
                 y = random.nextInt(size);
             } while (grid[x][y] != '.');
-            ghosts.add(new Ghost(x, y, this)); // Create and add new ghost to the list
+            ghosts.add(new Ghost(x, y, this, behaviour)); // Create and add new ghost to the list
         }
     }
 
